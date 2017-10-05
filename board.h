@@ -23,7 +23,8 @@ private:
     std::array<int, 9> xSpots;
 };
 
-void Board::simulateMove(bool isX) {
+void Board::simulateMove(bool isX) 
+{
     /**************************************
      TODO: Implement the AI that cannot
      lose a game of tic-tac-toe in here
@@ -38,73 +39,94 @@ void Board::simulateMove(bool isX) {
     // TODO: Remove this line when new AI is implemented
 }
 
-void Board::simulateTestAI(bool isX) {
+void Board::simulateTestAI(bool isX) 
+{
     int spot;
-    if (isX) {
-        do {
+    if (isX) 
+    {
+        do 
+        {
             spot = rand() % 9;
-        } while (!putX(spot));
+        }
+        while (!putX(spot));
     }
-    else {
-        do {
+    else 
+    {
+        do 
+        {
             spot = rand() % 9;
-        } while (!putO(spot));
+        } 
+        while (!putO(spot));
     }
     
 }
 
-Board::Board(void) {
+Board::Board(void) 
+{
     oSpots.fill(false);
     xSpots.fill(false);
 }
 
-bool Board::spotOpen(int spot) {
+bool Board::spotOpen(int spot) 
+{
     return spot >= 0 && spot < 9 && oSpots.at(spot) == false && xSpots.at(spot) == false;
 }
 
-bool Board::isFull(void) {
-    for (int i = 0; i < 9; i++) {
+bool Board::isFull(void) 
+{
+    for (int i = 0; i < 9; i++) 
+    {
         if (spotOpen(i))
             return false;
     }
     return true;
 }
 
-bool Board::putX(int spot) {
-    if (spotOpen(spot)) {
+bool Board::putX(int spot) 
+{
+    if (spotOpen(spot)) 
+    {
         xSpots[spot] = true;
         return true;
     }
     return false;
 }
 
-bool Board::putO(int spot) {
-    if (spotOpen(spot)) {
+bool Board::putO(int spot) 
+{
+    if (spotOpen(spot)) 
+    {
         oSpots.at(spot) = true;
         return true;
     }
     return false;
 }
 
-bool Board::checkXWin(void) {
+bool Board::checkXWin(void) 
+{
     return ((xSpots[0] && xSpots[1] && xSpots[2]) || (xSpots[3] && xSpots[4] && xSpots[5]) || (xSpots[6] && xSpots[7] && xSpots[8]) || (xSpots[0] && xSpots[3] && xSpots[6]) || (xSpots[1] && xSpots[4] && xSpots[7]) || (xSpots[2] && xSpots[5] && xSpots[8]) || xSpots[0] && xSpots[4] && xSpots[8] || xSpots[2] && xSpots[4] && xSpots[6]);
 }
 
-bool Board::checkOWin(void) {
+bool Board::checkOWin(void) 
+{
     return ((oSpots[0] && oSpots[1] && oSpots[2]) || (oSpots[3] && oSpots[4] && oSpots[5]) || (oSpots[6] && oSpots[7] && oSpots[8]) || (oSpots[0] && oSpots[3] && oSpots[6]) || (oSpots[1] && oSpots[4] && oSpots[7]) || (oSpots[2] && oSpots[5] && oSpots[8]) || oSpots[0] && oSpots[4] && oSpots[8] || oSpots[2] && oSpots[4] && oSpots[6]);
 }
 
-void Board::clear(void) {
+void Board::clear(void) 
+{
     oSpots.fill(false);
     xSpots.fill(false);
 }
 
-void Board::display(void) {
+void Board::display(void) 
+{
     cout << "\n";
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++) 
+    {
         cout << "\t-------------\n";
         cout << "\t";
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 3; j++) 
+        {
             cout << "| ";
             int spot;
             if (i == 0) {
@@ -115,7 +137,8 @@ void Board::display(void) {
                 else if (j == 2)
                     spot = 2;
             }
-            else if (i == 1) {
+            else if (i == 1) 
+            {
                 if (j == 0)
                     spot = 3;
                 else if (j == 1)
@@ -123,7 +146,8 @@ void Board::display(void) {
                 else if (j == 2)
                     spot = 5;
             }
-            else if (i == 2) {
+            else if (i == 2) 
+            {
                 if (j == 0)
                     spot = 6;
                 else if (j == 1)
